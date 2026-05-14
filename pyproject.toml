@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chunkvault"
+version = "0.1.0"
+description = "A fault-tolerant mini distributed file storage simulator."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "N0rd9" }]
+dependencies = [
+    "fastapi>=0.110",
+    "python-multipart>=0.0.9",
+    "typer>=0.12",
+    "uvicorn[standard]>=0.29",
+]
+
+[project.optional-dependencies]
+dev = [
+    "httpx>=0.27",
+    "pytest>=8",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+chunkvault = "chunkvault.cli:app"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
